@@ -4,13 +4,23 @@
   "version": "1.0.0",
   "author": "Joaquin Garcia <joaquin@gendra.dev>",
   "devDependencies": {
-    "babel-cli": "^6.24.1"
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-flow-strip-types": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
   },
-  "keywords": ["gatsby", "gatsby-plugin", "facebook many pixels"],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "facebook many pixels"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "babel src --out-dir .",
-    "watch": "babel -w src --out-dir ."
+    "watch": "babel -w src --out-dir .",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
