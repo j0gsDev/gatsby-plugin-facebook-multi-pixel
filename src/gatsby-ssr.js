@@ -4,7 +4,7 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   if (process.env.NODE_ENV === `production`) {
     return setHeadComponents([
       <script
-        key={`gatsby-plugin-facebook-pixel`}
+        key={`gatsby-plugin-facebook-multi-pixels`}
         dangerouslySetInnerHTML={{
           __html: `
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -12,7 +12,11 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '${pluginOptions.pixelId}'); // Insert your pixel ID here.
+  ${pluginOptions.map((opts, index) => (`
+  fbq('init', '${opts.pixelId}');
+  f.${opts.alias || `fbq${index}`}=function(x,y){return fbq('trackSingle',${opts.pixelId},x,y);};
+  f.${opts.alias || `fbq${index}`}Custom=function(x,y){return fbq('trackSingleCustom',${opts.pixelId},x,y);};
+  `)).join('\n\t')}
   fbq('track', 'PageView');
       `,
         }}

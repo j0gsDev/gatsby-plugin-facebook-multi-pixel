@@ -1,6 +1,8 @@
-exports.onRouteUpdate = function({ location }) {
+exports.onRouteUpdate = function({ location }, pluginOptions) {
   // Don't track while developing.
-  if (process.env.NODE_ENV === `production` && typeof fbq === `function`) {
-    fbq('track', 'ViewContent');
+  for (const scriptOpts of object) {
+    if (process.env.NODE_ENV === `production` && typeof fbq === `function` && scriptOpts.viewContent) {
+      fbq('trackSingle', scriptOpts.pixelId, 'ViewContent');
+    }
   }
 };
