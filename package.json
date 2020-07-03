@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-facebook-multi-pixels",
   "description": "Gatsby plugin to add many facebook pixel onto a site, based on https://github.com/gscopet/gatsby-plugin-facebook-pixel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Joaquin Garcia <joaquin@gendra.dev>",
   "devDependencies": {
     "@babel/cli": "^7.10.4",
