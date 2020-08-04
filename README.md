@@ -14,11 +14,13 @@ plugins: [
     resolve: `gatsby-plugin-facebook-multi-pixels`,
     options: [
       {
+        dev: false,
         alias: 'pixelA',
         pixelId: 'pixel id here',
         viewContent: true,
       },
       {
+        dev: true,
         alias: 'pixelB',
         pixelId: 'pixel id here',
         viewContent: false,
