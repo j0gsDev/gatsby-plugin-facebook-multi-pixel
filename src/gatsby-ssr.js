@@ -14,7 +14,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 ${options.map((opts, index) => (opts.dev || process.env.NODE_ENV === `production` ? `
 fbq('init', '${opts.pixelId}');
-fbq('trackSingle', '${opts.pixelId}', 'PageView');
+${ops.pageView ? `fbq('trackSingle', '${opts.pixelId}', 'PageView');` : ''}
 ` : '')).join('\n\t')}
     `,
       }}
